@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Developer Portfolio</title>
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles for smooth transitions */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Dark Theme Classes (Default) */
+        .dark-mode {
+            background-color: #0d1117;
+            color: #e5e7eb;
+        }
+        .dark-mode .bg-card { background-color: #161b22; }
+        .dark-mode .text-primary { color: #e5e7eb; }
+        .dark-mode .text-secondary { color: #9ca3af; }
+        .dark-mode .border-default { border-color: #374151; }
+        .dark-mode .shadow-default { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1); }
+        .dark-mode .input-field { background-color: #1f2937; border-color: #374151; color: #e5e7eb; }
+
+        /* Light Theme Classes */
+        .light-mode {
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+        .light-mode .bg-card { background-color: #ffffff; }
+        .light-mode .text-primary { color: #1f2937; }
+        .light-mode .text-secondary { color: #6b7280; }
+        .light-mode .border-default { border-color: #e5e7eb; }
+        .light-mode .shadow-default { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05); }
+        .light-mode .input-field { background-color: #ffffff; border-color: #d1d5db; color: #1f2937; }
+
+        /* General Accent Styling */
+        .accent-color { color: #4f46e5; } /* indigo-600 */
+        .bg-accent { background-color: #4f46e5; }
+        .hover-accent:hover { background-color: #4338ca; }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-sm shadow-lg border-b border-default transition duration-500" id="header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Name -->
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-2xl font-bold accent-color tracking-wider">Esleshwar <span class="text-primary">Sharma</span></a>
+                </div>
+
+                <!-- Desktop Navigation Links & Theme Toggle -->
+                <div class="flex items-center space-x-6">
+                    <nav class="hidden md:flex space-x-8">
+                        <a href="#about" class="nav-link text-secondary hover:accent-color transition duration-300">About</a>
+                        <a href="#skills" class="nav-link text-secondary hover:accent-color transition duration-300">Skills</a>
+                        <a href="#projects" class="nav-link text-secondary hover:accent-color transition duration-300">Projects</a>
+                        <a href="#contact" class="nav-link text-secondary hover:accent-color transition duration-300">Contact</a>
+                    </nav>
+
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" class="p-2 rounded-full border border-default transition duration-300 hover:bg-indigo-600 hover:border-indigo-600 group">
+                        <!-- Sun Icon (for light mode) / Moon Icon (for dark mode) -->
+                        <svg id="theme-icon" class="w-6 h-6 text-yellow-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto">
+
+        <!-- 1. Hero Section -->
+        <section id="home" class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 text-center min-h-[80vh] flex items-center justify-center">
+            <div class="max-w-3xl">
+                <img class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-6 object-cover border-4 border-indigo-500 shadow-default"
+                    src="logo.png"
+                    onerror="this.onerror=null; this.src='https://placehold.co/150x150/4f46e5/ffffff?text=Avatar';"
+                    alt="Professional Profile Picture">
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight mb-4 text-primary">
+                    Hi, I'm <span class="accent-color">Esleshwar Sharma</span>
+                </h1>
+                <p id="typewriter-text" class="text-xl sm:text-2xl text-secondary mb-8 h-10 min-h-full">
+                    <!-- Dynamic text will be typed here -->
+                </p>
+                <a href="#projects" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-accent hover-accent md:py-4 md:text-lg md:px-10 shadow-lg transition duration-300 transform hover:scale-[1.02]">
+                    Resume
+                </a>
+            </div>
+        </section>
+
+        <!-- 2. About Section -->
+        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-default">
+            <h2 class="text-4xl font-bold text-center text-primary mb-12">About Me</h2>
+            <div class="max-w-4xl mx-auto bg-card p-8 rounded-xl shadow-2xl transition duration-500">
+                <p class="text-lg text-secondary leading-relaxed mb-4">
+                    I am an enthusiastic and dedicated **Full Stack Developer** ready to launch my career. My strong technical foundation began with my **B.Tech graduation** from the **Majhighariani Institute of Technology & Science**.
+                </p>
+                <p class="text-lg text-secondary leading-relaxed">
+                    To rapidly gain practical skills, I completed a focused **full-stack development internship** at **Qspider**, where I specialized in **Django**. Furthermore, I honed my end-to-end development abilities through comprehensive training at the **AlmaBetter Institute**.
+                </p>
+                <p class="text-lg text-secondary leading-relaxed">
+                    As a recent graduate and **fresher**, I am eager to apply my academic knowledge and project-based experience to build impactful, scalable applications.
+                </p>
+            </div>
+        </section>
+
+        <!-- 3. Skills Section (Dynamically rendered) -->
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-default">
+            <h2 class="text-4xl font-bold text-center text-primary mb-12">Skills & Technologies</h2>
+            <div id="skills-container" class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Skill cards will be injected here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- 4. Projects Section -->
+        <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-default">
+            <h2 class="text-4xl font-bold text-center text-primary mb-12">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+
+                <!-- Project Card 1 -->
+                <div class="bg-card rounded-xl overflow-hidden shadow-2xl transition duration-500 hover:shadow-indigo-500/50 transform hover:-translate-y-1">
+                    <img class="w-full h-56 object-cover"
+                        src="https://placehold.co/600x350/374151/ffffff?text=E-Commerce+Platform"
+                        onerror="this.onerror=null; this.src='https://placehold.co/600x350/374151/ffffff?text=Project+Mockup';"
+                        alt="Project 1 Mockup">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-primary mb-2">E-Commerce Analytics Dashboard</h3>
+                        <p class="text-secondary mb-4">A full-stack application built with Next.js and MongoDB to provide real-time sales and inventory metrics for a small business.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 text-sm font-medium bg-indigo-900/50 text-indigo-300 rounded-full">Next.js</span>
+                            <span class="px-3 py-1 text-sm font-medium bg-indigo-900/50 text-indigo-300 rounded-full">MongoDB</span>
+                        </div>
+                        <a href="#" target="_blank" class="accent-color hover:text-indigo-300 font-medium transition duration-300">View Live Demo &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="bg-card rounded-xl overflow-hidden shadow-2xl transition duration-500 hover:shadow-indigo-500/50 transform hover:-translate-y-1">
+                    <img class="w-full h-56 object-cover"
+                        src="https://placehold.co/600x350/374151/ffffff?text=Task+Management+App"
+                        onerror="this.onerror=null; this.src='https://placehold.co/600x350/374151/ffffff?text=Project+Mockup';"
+                        alt="Project 2 Mockup">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-primary mb-2">Collaborative Task Manager</h3>
+                        <p class="text-secondary mb-4">A Kanban-style task management tool using React and Firebase Firestore for real-time, multi-user updates and state persistence.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 text-sm font-medium bg-indigo-900/50 text-indigo-300 rounded-full">React</span>
+                            <span class="px-3 py-1 text-sm font-medium bg-indigo-900/50 text-indigo-300 rounded-full">Firestore</span>
+                        </div>
+                        <a href="#" target="_blank" class="accent-color hover:text-indigo-300 font-medium transition duration-300">View Source Code &rarr;</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. Contact Section -->
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-default">
+            <h2 class="text-4xl font-bold text-center text-primary mb-12">Get In Touch</h2>
+            <div class="max-w-xl mx-auto bg-card p-8 rounded-xl shadow-2xl transition duration-500">
+                <p class="text-lg text-secondary text-center mb-6">Have a project in mind or want to say hello? Send me a message!</p>
+                <form id="contact-form" action="#" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-secondary mb-1">Name</label>
+                        <input type="text" id="name" name="name" required
+                               class="w-full px-4 py-2 rounded-lg placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500 transition duration-300 input-field">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-secondary mb-1">Email</label>
+                        <input type="email" id="email" name="email" required
+                               class="w-full px-4 py-2 rounded-lg placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500 transition duration-300 input-field">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-secondary mb-1">Message</label>
+                        <textarea id="message" name="message" rows="4" required
+                                  class="w-full px-4 py-2 rounded-lg placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500 transition duration-300 input-field"></textarea>
+                    </div>
+                    <button type="submit"
+                            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-medium text-white bg-accent hover-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300">
+                        Send Message
+                    </button>
+                    <div id="contact-message" class="text-center mt-4 text-green-400 hidden"></div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-card/50 border-t border-default mt-12 transition duration-500">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <p class="text-secondary text-sm">© 2025 Esleshwar Sharma. Built dynamically with JS & Tailwind.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <!-- Social Icons (Placeholder) -->
+                    <a href="#" target="_blank" class="text-secondary hover:accent-color transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.417 2.865 8.173 6.843 9.576.5.088.682-.257.682-.577 0-.285-.01-1.04-.015-2.04-2.784.604-3.37-1.341-3.37-1.341-.454-1.15-.111-1.458-.111-1.458.932-.647 1.419.063 1.419.063.824 1.404 2.155.999 2.673.765.084-.593.324-.999.593-1.226-2.05-.23-4.21-1.022-4.21-4.542 0-1.006.36-1.832.96-2.472-.095-.23-2.617-6.075.226-6.435 0 0 .782-.248 2.56.96.745-.207 1.538-.31 2.336-.312.798-.002 1.591.105 2.336.312 1.778-1.208 2.56-.96 2.56-.96.262.36.098 5.764.098 5.764.6.64.96 1.466.96 2.472 0 3.53-2.16 4.309-4.216 4.532.33.284.627.842.627 1.76 0 1.267-.012 2.287-.012 2.593 0 .32.18.67.688.577C19.135 20.19 22 16.434 22 12.017 22 6.484 17.523 2 12 2z" clip-rule="evenodd" /></svg>
+                        
+                    </a>
+                    <a href="YOUR_LINKEDIN_URL" target="_blank" class="text-secondary hover:accent-color transition duration-300" aria-label="LinkedIn Profile">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.238-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Dynamic Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- 1. Data Definitions for Dynamic Content ---
+            const skillsData = [
+                { name: 'JavaScript', icon: '💡', color: 'text-yellow-400' },
+                { name: 'React', icon: '⚛️', color: 'text-blue-400' },
+                { name: 'Node.js', icon: '🟢', color: 'text-green-500' },
+                { name: 'Tailwind CSS', icon: '🎨', color: 'text-teal-400' },
+                { name: 'TypeScript', icon: '💻', color: 'text-blue-600' },
+                { name: 'PostgreSQL', icon: '🐘', color: 'text-indigo-400' },
+                { name: 'Python', icon: '🐍', color: 'text-orange-500' },
+                { name: 'Docker/AWS', icon: '☁️', color: 'text-gray-400' },
+            ];
+
+            const typewriterMessages = [
+                "A Full Stack Developer specializing in crafting robust and scalable web applications.",
+                "I bring ideas to life with clean code and modern frameworks.",
+                "Let's build something amazing together."
+            ];
+
+            // --- 2. Dynamic Skill Rendering Function ---
+            const skillsContainer = document.getElementById('skills-container');
+
+            function renderSkills() {
+                if (!skillsContainer) return;
+                skillsContainer.innerHTML = skillsData.map(skill => `
+                    <div class="bg-card p-6 rounded-xl text-center transition duration-500 hover:bg-indigo-600/20 transform hover:shadow-indigo-500/50 shadow-xl">
+                        <span class="text-4xl ${skill.color} mb-2 block" role="img" aria-label="${skill.name} Icon">${skill.icon}</span>
+                        <p class="text-lg font-semibold text-primary">${skill.name}</p>
+                    </div>
+                `).join('');
+            }
+
+            // --- 3. Typewriter Effect Function ---
+            const typewriterElement = document.getElementById('typewriter-text');
+            let messageIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function typeWriter() {
+                if (!typewriterElement) return;
+
+                const currentMessage = typewriterMessages[messageIndex];
+
+                if (!isDeleting) {
+                    // Typing
+                    typewriterElement.textContent = currentMessage.substring(0, charIndex + 1) + ' |';
+                    charIndex++;
+
+                    if (charIndex === currentMessage.length) {
+                        isDeleting = true;
+                        setTimeout(typeWriter, 2000); // Pause at end of message
+                    } else {
+                        setTimeout(typeWriter, 80); // Speed of typing
+                    }
+                } else {
+                    // Deleting
+                    typewriterElement.textContent = currentMessage.substring(0, charIndex - 1) + ' |';
+                    charIndex--;
+
+                    if (charIndex === 0) {
+                        isDeleting = false;
+                        messageIndex = (messageIndex + 1) % typewriterMessages.length;
+                        setTimeout(typeWriter, 500); // Pause before starting new message
+                    } else {
+                        setTimeout(typeWriter, 40); // Speed of deleting
+                    }
+                }
+            }
+            
+            // --- 4. Theme Toggle Functionality ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            function updateThemeIcon(isDarkMode) {
+                const icon = document.getElementById('theme-icon');
+                if (!icon) return;
+
+                // Toggle icon paths and colors based on the mode
+                if (isDarkMode) {
+                    // Show sun icon (to indicate clicking it will switch to light mode)
+                    icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />';
+                    icon.classList.remove('text-gray-700');
+                    icon.classList.add('text-yellow-400');
+                } else {
+                    // Show moon icon (to indicate clicking it will switch to dark mode)
+                    icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />';
+                    icon.classList.remove('text-yellow-400');
+                    icon.classList.add('text-gray-700');
+                }
+            }
+
+            function toggleTheme() {
+                const isDarkMode = body.classList.contains('dark-mode');
+                
+                if (isDarkMode) {
+                    body.classList.remove('dark-mode');
+                    body.classList.add('light-mode');
+                    localStorage.setItem('theme', 'light');
+                    updateThemeIcon(false);
+                } else {
+                    body.classList.remove('light-mode');
+                    body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark');
+                    updateThemeIcon(true);
+                }
+            }
+
+            // --- Initialization and Event Listeners ---
+            
+            // Load saved theme or default to dark
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                updateThemeIcon(false);
+            } else {
+                body.classList.add('dark-mode');
+                updateThemeIcon(true);
+            }
+
+            // Theme toggle listener
+            if (themeToggle) {
+                themeToggle.addEventListener('click', toggleTheme);
+            }
+
+            // Start dynamic rendering and effects
+            renderSkills();
+            typeWriter();
+
+
+            // --- Other Functionality (Scrollspy and Form Handling) ---
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+
+            // Form Submission Handling (Mockup)
+            const contactForm = document.getElementById('contact-form');
+            const contactMessage = document.getElementById('contact-message');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    console.log('Form Submitted!');
+
+                    contactMessage.textContent = 'Message sent successfully! I will get back to you soon.';
+                    contactMessage.classList.remove('hidden');
+                    contactForm.reset();
+
+                    setTimeout(() => {
+                        contactMessage.classList.add('hidden');
+                    }, 5000);
+                });
+            }
+
+            // Scrollspy for Active Link Highlighting
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -50% 0px', // Highlights link when section is halfway up the screen
+                threshold: 0.1,
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.id;
+                    const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
+
+                    if (navLink) {
+                        if (entry.isIntersecting) {
+                            // Remove active class from all
+                            navLinks.forEach(link => {
+                                link.classList.remove('accent-color', 'font-bold');
+                                link.classList.add('text-secondary');
+                            });
+
+                            // Add active class to the intersecting one
+                            navLink.classList.remove('text-secondary');
+                            navLink.classList.add('accent-color', 'font-bold');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
+</body>
+</html>
